@@ -22,7 +22,7 @@ class DistinctByGatherer<T, P> implements Gatherer<T, Set<P>, T> {
     public Integrator<Set<P>, T, T> integrator() {
         return Integrator.ofGreedy((state, item, downstream) -> {
             P extracted = selector.apply(item);
-            if(!state.contains(extracted)) {
+            if (!state.contains(extracted)) {
                 state.add(extracted);
                 return downstream.push(item);
             }
