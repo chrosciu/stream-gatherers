@@ -48,7 +48,6 @@ class S06DistinctBySelector {
                 new Car("Fiat Seicento", Color.BLACK)
         );
         List<Car> carsWithDistinctColor = cars.stream()
-                .parallel()
                 .gather(new DistinctByGatherer<>(Car::color))
                 .toList();
         System.out.println(carsWithDistinctColor);
