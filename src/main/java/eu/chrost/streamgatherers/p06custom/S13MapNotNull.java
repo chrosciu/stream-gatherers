@@ -22,7 +22,7 @@ class MapNotNullGatherer<T, M> implements Gatherer<T, Void, M> {
     }
 }
 
-class S08MapNotNull {
+class S13MapNotNull {
     public static void main(String[] args) {
         List<Integer> numbers = new ArrayList<>();
         numbers.add(1);

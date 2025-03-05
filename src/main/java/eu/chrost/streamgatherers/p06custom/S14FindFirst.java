@@ -22,7 +22,7 @@ class FindFirstGatherer<T> implements Gatherer<T, Void, T> {
     }
 }
 
-class S09FindFirst {
+class S14FindFirst {
     public static void main(String[] args) {
         List<Integer> numbers = List.of(1, 2, 4, 5);
         var firstEvenNumber = numbers.stream()

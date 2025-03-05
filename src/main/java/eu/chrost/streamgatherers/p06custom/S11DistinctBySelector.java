@@ -39,7 +39,7 @@ enum Color {
 
 record Car(String model, Color color) {}
 
-class S06DistinctBySelector {
+class S11DistinctBySelector {
     public static void main(String[] args) {
         List<Car> cars = List.of(
                 new Car("Polonez Caro", Color.RED),

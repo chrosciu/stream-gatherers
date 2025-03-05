@@ -69,7 +69,7 @@ class MaxByGatherer<T, B extends Comparable<B>> implements Gatherer<T, AtomicRef
     }
 }
 
-class S07MaxBySelector {
+class S12MaxBySelector {
     public static void main(String[] args) {
         List<String> words = List.of("Ala", "ma", "kota");
         List<String> longestWord = words.stream()
