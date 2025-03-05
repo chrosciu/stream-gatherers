@@ -7,7 +7,7 @@ import java.util.stream.Gatherers;
 import java.util.stream.Stream;
 
 @Slf4j
-class S05MapConcurrent {
+class S10MaintainingOrder {
     public static void main(String[] args) {
         Stream.of(1, 2, 3, 4, 5, 6)
                 .gather(Gatherers.mapConcurrent(2, v -> squareWithDelay(v)))
