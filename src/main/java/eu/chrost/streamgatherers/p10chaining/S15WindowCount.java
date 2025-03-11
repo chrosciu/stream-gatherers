@@ -1,4 +1,4 @@
-package eu.chrost.streamgatherers.p07chaining;
+package eu.chrost.streamgatherers.p10chaining;
 
 import java.util.List;
 import java.util.stream.Gatherers;

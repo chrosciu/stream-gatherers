@@ -1,4 +1,4 @@
-package eu.chrost.streamgatherers.p06custom;
+package eu.chrost.streamgatherers.p09parallel;
 
 import lombok.RequiredArgsConstructor;
 
@@ -11,7 +11,7 @@ import java.util.function.Supplier;
 import java.util.stream.Gatherer;
 
 @RequiredArgsConstructor
-class MaxByGatherer<T, B extends Comparable<B>> implements Gatherer<T, AtomicReference<T>, T> {
+class MaxBySelectorGatherer<T, B extends Comparable<B>> implements Gatherer<T, AtomicReference<T>, T> {
     private final Function<T, B> extractor;
 
     @Override
@@ -74,7 +74,7 @@ class S14MaxBySelector {
         List<String> words = List.of("Ala", "ma", "kota");
         List<String> longestWord = words.stream()
                 .parallel()
-                .gather(new MaxByGatherer<>(String::length))
+                .gather(new MaxBySelectorGatherer<>(String::length))
                 .toList();
         System.out.println(longestWord);
     }

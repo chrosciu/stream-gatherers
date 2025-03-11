@@ -1,10 +1,10 @@
-package eu.chrost.streamgatherers.p06custom;
+package eu.chrost.streamgatherers.p06stateless;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Gatherer;
 
-class S12MapNotNull {
+class S11MapNotNull {
     public static void main(String[] args) {
         List<Integer> numbers = new ArrayList<>();
         numbers.add(1);

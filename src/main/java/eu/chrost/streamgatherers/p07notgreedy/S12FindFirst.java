@@ -1,4 +1,4 @@
-package eu.chrost.streamgatherers.p06custom;
+package eu.chrost.streamgatherers.p07notgreedy;
 
 import lombok.RequiredArgsConstructor;
 
@@ -22,7 +22,7 @@ class FindFirstGatherer<T> implements Gatherer<T, Void, T> {
     }
 }
 
-class S13FindFirst {
+class S12FindFirst {
     public static void main(String[] args) {
         List<Integer> numbers = List.of(1, 2, 4, 5);
         var firstEvenNumber = numbers.stream()
