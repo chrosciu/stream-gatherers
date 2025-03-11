@@ -1,10 +1,10 @@
-package eu.chrost.streamgatherers.p10chaining;
+package eu.chrost.streamgatherers.p11chaining;
 
 import java.util.List;
 import java.util.stream.Gatherers;
 import java.util.stream.Stream;
 
-public class S15WindowCount {
+public class S16WindowCount {
     public static void main(String[] args) {
         List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         Stream<Integer> windowCount = numbers.stream()
