@@ -16,9 +16,7 @@ class MaxBySelectorGatherer<T, B extends Comparable<B>> implements Gatherer<T, A
 
     @Override
     public Supplier<AtomicReference<T>> initializer() {
-        return () -> {
-            return new AtomicReference<>(null);
-        };
+        return () -> new AtomicReference<>(null);
     }
 
     @Override
