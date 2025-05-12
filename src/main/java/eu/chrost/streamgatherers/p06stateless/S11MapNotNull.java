@@ -2,9 +2,18 @@ package eu.chrost.streamgatherers.p06stateless;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Gatherer;
+import java.util.stream.Gatherer.Integrator;
 
 class S11MapNotNull {
+    private static <T, R> Gatherer<T, Void, R> mapNotNullGatherer(Function<T, R> mapper) {
+        return Gatherer.of(
+                Integrator.ofGreedy((_, item, downstream) ->
+                        item != null ? downstream.push(mapper.apply(item)) : true)
+        );
+    }
+
     public static void main(String[] args) {
         List<Integer> numbers = new ArrayList<>();
         numbers.add(1);
@@ -12,14 +21,7 @@ class S11MapNotNull {
         numbers.add(null);
         numbers.add(3);
         List<Integer> doubledNumbers = numbers.stream()
-                .gather(Gatherer.of(
-                     Gatherer.Integrator.<Void, Integer, Integer>ofGreedy((_, item, downstream) -> {
-                         if (item != null) {
-                             return downstream.push(item * 2);
-                         }
-                         return true;
-                     })
-                ))
+                .gather(mapNotNullGatherer(i -> i * 2))
                 .toList();
         System.out.println(doubledNumbers);
     }
