@@ -10,7 +10,8 @@ class S11MapNotNull {
     private static <T, R> Gatherer<T, Void, R> mapNotNullGatherer(Function<T, R> mapper) {
         return Gatherer.of(
                 Integrator.ofGreedy((_, item, downstream) ->
-                        item != null ? downstream.push(mapper.apply(item)) : true)
+                        item != null ? downstream.push(mapper.apply(item)) : true
+                )
         );
     }
 
