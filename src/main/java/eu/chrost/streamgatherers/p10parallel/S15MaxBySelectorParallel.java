@@ -1,6 +1,7 @@
 package eu.chrost.streamgatherers.p10parallel;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
@@ -11,17 +12,22 @@ import java.util.function.Supplier;
 import java.util.stream.Gatherer;
 
 @RequiredArgsConstructor
+@Slf4j
 class MaxBySelectorParallelGatherer<T, B extends Comparable<B>> implements Gatherer<T, AtomicReference<T>, T> {
     private final Function<T, B> extractor;
 
     @Override
     public Supplier<AtomicReference<T>> initializer() {
-        return () -> new AtomicReference<>(null);
+        return () -> {
+            log.info("Initializing");
+            return new AtomicReference<>(null);
+        };
     }
 
     @Override
     public Integrator<AtomicReference<T>, T, T> integrator() {
         return Integrator.ofGreedy((state, item, _) -> {
+            log.info("Gathering item {}", item);
             if (state.get() == null) {
                 state.set(item);
                 return true;
@@ -40,8 +46,8 @@ class MaxBySelectorParallelGatherer<T, B extends Comparable<B>> implements Gathe
 
     @Override
     public BinaryOperator<AtomicReference<T>> combiner() {
-
         return (first, second) -> {
+            log.info("Combining {} and {}", first, second);
             if (first.get() == null && second.get() == null) {
                 return null;
             } else if (first.get() == null) {
