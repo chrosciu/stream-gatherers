@@ -1,6 +1,5 @@
 package eu.chrost.streamgatherers.p02scan;
 
-import java.util.AbstractMap;
 import java.util.stream.Gatherers;
 import java.util.stream.Stream;
 
