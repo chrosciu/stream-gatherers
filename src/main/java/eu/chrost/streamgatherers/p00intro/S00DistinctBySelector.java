@@ -4,14 +4,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-enum Color {
-    RED,
-    BLACK,
-    WHITE;
-}
-
-record Car(String model, Color color) {}
-
 public class S00DistinctBySelector {
     public static void main(String[] args) {
         List<Car> cars = List.of(
