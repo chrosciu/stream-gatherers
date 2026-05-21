@@ -19,9 +19,9 @@ class S00Distinct {
                 new Car("Fiat Seicento", Color.BLACK),
                 new Car("Polonez Caro", Color.RED)
         );
-        List<Car> carsWithDistinctColor = cars.stream()
+        List<Car> distinctCars = cars.stream()
                 .distinct()
                 .toList();
-        System.out.println(carsWithDistinctColor);
+        System.out.println(distinctCars);
     }
 }
