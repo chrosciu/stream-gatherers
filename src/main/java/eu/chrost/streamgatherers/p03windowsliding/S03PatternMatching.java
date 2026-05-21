@@ -8,7 +8,7 @@ public class S03PatternMatching {
 
     public static void main(String[] args) {
         List.of(1, 0, 1, 1, 0, 1, 0, 0, 1).stream()
-                .gather(Gatherers.windowSliding(3))
+                .gather(Gatherers.windowSliding(PATTERN.size()))
                 .filter(window -> window.equals(PATTERN))
                 .forEach(pattern -> System.out.println("Pattern found: " + pattern));
     }

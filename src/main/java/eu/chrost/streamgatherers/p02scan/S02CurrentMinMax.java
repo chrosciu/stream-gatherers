@@ -16,6 +16,7 @@ public class S02CurrentMinMax {
                             return new MinMax(min, max);
                         }
                 ))
-                .forEach(state -> System.out.println("Min: " + state.min() + ", Max: " + state.max()));
+                .forEach(state ->
+                        System.out.println("Min: " + state.min() + ", Max: " + state.max()));
     }
 }

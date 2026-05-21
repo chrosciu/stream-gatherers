@@ -12,9 +12,12 @@ public class S04PatternMatchingWithIndex {
         List.of(1, 0, 1, 1, 0, 1, 0, 0, 1).stream()
                 .gather(Gatherers.scan(
                         () -> new IndexedValue(-1, 0),
-                        (state, value) -> new IndexedValue(state.index() + 1, value)))
-                .gather(Gatherers.windowSliding(3))
-                .filter(window -> window.stream().map(IndexedValue::value).toList().equals(PATTERN))
-                .forEach(pattern -> System.out.println("Pattern found at index: " + pattern.getFirst().index()));
+                        (state, value) ->
+                                new IndexedValue(state.index() + 1, value)))
+                .gather(Gatherers.windowSliding(PATTERN.size()))
+                .filter(window ->
+                        window.stream().map(IndexedValue::value).toList().equals(PATTERN))
+                .forEach(pattern ->
+                        System.out.println("Pattern " + PATTERN + " found at index: " + pattern.getFirst().index()));
     }
 }
