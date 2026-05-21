@@ -21,9 +21,9 @@ class DistinctBySelectorGatherer<T, P> implements Gatherer<T, Set<P>, T> {
     @Override
     public Integrator<Set<P>, T, T> integrator() {
         return Integrator.ofGreedy((state, item, downstream) -> {
-            P extracted = selector.apply(item);
-            if (!state.contains(extracted)) {
-                state.add(extracted);
+            P property = selector.apply(item);
+            if (!state.contains(property)) {
+                state.add(property);
                 return downstream.push(item);
             }
             return true;
