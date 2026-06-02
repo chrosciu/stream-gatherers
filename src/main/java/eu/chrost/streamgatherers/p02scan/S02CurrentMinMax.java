@@ -10,11 +10,8 @@ public class S02CurrentMinMax {
         Stream.of(3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5)
                 .gather(Gatherers.scan(
                         () -> new MinMax(Integer.MAX_VALUE, Integer.MIN_VALUE),
-                        (state, value) -> {
-                            int min = Math.min(state.min(), value);
-                            int max = Math.max(state.max(), value);
-                            return new MinMax(min, max);
-                        }
+                        (state, value) ->
+                                new MinMax(Math.min(state.min(), value), Math.max(state.max(), value))
                 ))
                 .forEach(state ->
                         System.out.println("Min: " + state.min() + ", Max: " + state.max()));
